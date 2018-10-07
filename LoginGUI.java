@@ -20,6 +20,7 @@ public class LoginGUI extends JFrame {
     JLabel passwordLabel = new JLabel("Password");
     JPasswordField passwordText = new JPasswordField(20);
     JButton btnLogin=new JButton("Login");
+    JButton btnExit = new JButton("Exit");
     JLabel creation= new JLabel("powered by SEP");
     MainGUI regView;
 
@@ -58,12 +59,17 @@ public class LoginGUI extends JFrame {
 
         btnLogin.setBounds(10, 80, 80, 25);
         jpanel.add(btnLogin);
+        
+        btnExit.setBounds(235, 81, 89, 23);
+        jpanel.add(btnExit);
 
-        creation.setBounds(200,150,100,25);
+        creation.setBounds(224,125,100,25);
         jpanel.add(creation);
 
 
 
+        btnExit.addActionListener(e -> System.exit(0));
+        
         btnLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String username= userText.getText();
