@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class MainGUI extends JFrame{
@@ -120,8 +122,9 @@ public class MainGUI extends JFrame{
         setVisible(true);
 
       createEventListener();
+      listEventsListener();
+
 //        createClientListener();
-//        listEventsListener();
 //        listClientsListener();
 //        createTaskListener();
 //        listTasksListener();
@@ -133,9 +136,21 @@ public class MainGUI extends JFrame{
     public void createEventListener(){
         btnCreateEvent.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                EventRequestGUI frame = new EventRequestGUI(controller);
+                EventRequestGUI frame = new EventRequestGUI();
             }
         });
+    }
+
+
+    public void  listEventsListener() {
+        btnListEvent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EventViewGUI frame= new EventViewGUI();
+
+            }
+        });
+
     }
 
 }
