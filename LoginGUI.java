@@ -15,21 +15,26 @@ public class LoginGUI extends JFrame {
 
 
     JPanel jpanel = new JPanel();
-    JLabel userLabel= new JLabel("User");
+    JLabel userLabel= new JLabel("Username");
     JTextField userText = new JTextField(20);
     JLabel passwordLabel = new JLabel("Password");
     JPasswordField passwordText = new JPasswordField(20);
     JButton btnLogin=new JButton("Login");
     JLabel creation= new JLabel("powered by SEP");
     MainGUI regView;
+    private final JButton btnExit = new JButton("Exit");
 
     public LoginGUI(){
         super("Login with Username and Password");
 
         panel();
-        //JFrame frame = new JFrame("Type your credentials");
+        JFrame frame = new JFrame("Type your credentials");
 
         getContentPane().add(jpanel);
+        btnExit.addActionListener(e -> System.exit(0));
+        btnExit.setBounds(235, 81, 89, 23);
+        
+        jpanel.add(btnExit);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Setting the frame visibility to true
         setVisible(true);
@@ -59,7 +64,7 @@ public class LoginGUI extends JFrame {
         btnLogin.setBounds(10, 80, 80, 25);
         jpanel.add(btnLogin);
 
-        creation.setBounds(200,150,100,25);
+        creation.setBounds(224,125,100,25);
         jpanel.add(creation);
 
 
@@ -75,7 +80,7 @@ public class LoginGUI extends JFrame {
                     regView= new MainGUI(user);
                     //Πρεπει να περασουμε το login αλλιως δεν μπορουμε
                     // να κλεισουμε το login παραθυρο
-                    //loginGUI.setVisible(false);
+                    
                     regView.setVisible(true);
 
 
