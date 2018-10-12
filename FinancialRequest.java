@@ -1,12 +1,13 @@
 
+
 public class FinancialRequest {
 	private EventRequest event;
 	private String reason;
-	private double amount;
+	private String amount;
 	private Employee manager;
 	private int id;
 	
-	public FinancialRequest(EventRequest event, String reason, double amount, Employee manager, int id) {
+	public FinancialRequest(EventRequest event, String reason, String amount, Employee manager, int id) {
 		this.event = event;
 		this.reason = reason;
 		this.amount = amount;
@@ -30,11 +31,11 @@ public class FinancialRequest {
 		this.reason = reason;
 	}
 
-	public double getAmount() {
+	public String getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 

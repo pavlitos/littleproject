@@ -3,15 +3,15 @@ import java.util.ArrayList;
 
 public class SubTeam {
 	private List<Employee> staff;
-	private Employee manager;
+	private String manager;
 	private String name;
-	
-	public SubTeam(Employee manager, String name) {
+
+	public SubTeam(String manager, String name) {
 		staff = new ArrayList<>();
 		this.manager = manager;
 		this.setName(name);
 	}
-	
+
 	public void addStaff(Employee employee) {
 		staff.add(employee);
 	}
@@ -24,11 +24,11 @@ public class SubTeam {
 		this.staff = staff;
 	}
 
-	public Employee getManager() {
+	public String getManager() {
 		return manager;
 	}
 
-	public void setManager(Employee manager) {
+	public void setManager(String manager) {
 		this.manager = manager;
 	}
 
@@ -39,9 +39,9 @@ public class SubTeam {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String toString() {
 		return "name: " + name;
 	}
-	
+
 }

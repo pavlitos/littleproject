@@ -5,7 +5,7 @@ public class Login {
 	
 	//Για να γλιτωσουμε το database χρησιμοποιουμε ArrayList οπου θα εχει τα attributes των employees
 	private List<Employee> employees;
-	String position[] = new String[12];
+	String position[] = new String[256];
 	
 	public Login() {		
 		employees = new ArrayList<>();
@@ -36,6 +36,28 @@ public class Login {
 		
 		//HR 
 		employees.add(new Employee("Simon", "678", "HR", "simon@sep.se", 35, "male", 10));
+		
+		//Photographer
+		employees.add(new Employee("Tobias", "111", "Photographer", "tobias@sep.se", 35, "male", 11));
+		
+		//Audio Specialist
+		employees.add(new Employee("Adam", "111", "Audio Specialist", "adam@sep.se", 35, "male", 12));
+		
+		//Designer
+		employees.add(new Employee("Julia", "111", "Designer", "julia@sep.se", 35, "female", 13));
+		
+		//Decorator
+		employees.add(new Employee("Magy", "111", "Decorator", "magy@sep.se", 35, "female", 14));
+		
+		//Technician
+		employees.add(new Employee("Michael", "111", "Technician", "michael@sep.se", 35, "male", 15));
+		
+		//Waiter
+		employees.add(new Employee("Johny", "111", "Waiter", "johny@sep.se", 35, "male", 16));
+		
+		//Chef
+		employees.add(new Employee("Helen", "111", "Chef", "chef@sep.se", 51, "female", 17));
+		
 	}
 	
 	
@@ -69,8 +91,6 @@ public class Login {
 
 		
 }
-	
-
 
 
 	

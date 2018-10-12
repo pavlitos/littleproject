@@ -5,13 +5,23 @@ import java.awt.event.ActionListener;
 
 public class MainGUI extends JFrame{
 
-
+	private Controller controller;
     private Employee employee;
-    private LoginGUI login;
+    private LoginGUI loginGUI;
     private EventRequest event;
 
 
     JPanel jpanel= new JPanel();
+    ViewClients listClientsView;
+    
+    public ViewClients getListClientsView() {
+    	return listClientsView;
+    }
+    
+    public void setListClientsView() {
+    	this.listClientsView = listClientsView;
+    }
+    
     JButton btnCreateEvent = new JButton("Create event");
     JButton btnCreateClient = new JButton("Create client");
     JButton btnListEvent = new JButton("List Events");
@@ -23,13 +33,16 @@ public class MainGUI extends JFrame{
     private final JButton btnListClients = new JButton("List Clients");
     private final JButton btnCreateTask = new JButton("Create Task");
     private final JButton btnListTasks = new JButton("List Tasks");
+    JButton btnCreateFinReq = new JButton("Create Financial Req");
 
-    public MainGUI(Employee currentUser){
+    public MainGUI(Employee currentUser, Controller controller){
 
         super("SEP MAIN MENU");
         setSize(800, 900);
         jpanel.setLayout(null);
+       
         employee=currentUser;
+        this.controller = controller;
 
 
         getContentPane().add(jpanel);
@@ -44,8 +57,8 @@ public class MainGUI extends JFrame{
         btnListClients.setVisible(false);
         btnCreateTask.setVisible(false);
         btnListTasks.setVisible(false);
-        btnCreateResource.setVisible(false);
         btnListResource.setVisible(false);
+        btnCreateFinReq.setVisible(false);
 
 
 
@@ -71,18 +84,19 @@ public class MainGUI extends JFrame{
             case "Production Manager":
                 btnCreateTask.setVisible(true);
                 btnCreateStaff.setVisible(true);
-                btnCreateResource.setVisible(true);
+                btnCreateFinReq.setVisible(true);
                 btnListTasks.setVisible(true);
                 break;
             case "Service Manager":
                 btnCreateTask.setVisible(true);
                 btnCreateStaff.setVisible(true);
-                btnCreateResource.setVisible(true);
+                btnCreateFinReq.setVisible(true);
                 btnListTasks.setVisible(true);
                 break;
             case "HR":
                 btnListStaff.setVisible(true);
                 break;
+             
 
 
         }
@@ -103,7 +117,7 @@ public class MainGUI extends JFrame{
         btnListClients.setBounds(12, 169, 157, 25);
 
         jpanel.add(btnListClients);
-        btnCreateTask.setBounds(12, 213, 150, 25);
+        btnCreateTask.setBounds(12, 213, 157, 25);
 
         jpanel.add(btnCreateTask);
         btnListTasks.setBounds(234, 23, 150, 25);
@@ -115,20 +129,26 @@ public class MainGUI extends JFrame{
         jpanel.add(btnCreateStaff);
 
 
-        btnListStaff.setBounds(237, 122, 147, 25);
+        btnListStaff.setBounds(234, 122, 150, 25);
         jpanel.add(btnListStaff);
+        
+
+        btnCreateFinReq.setBounds(234, 170, 150, 23);
+        jpanel.add(btnCreateFinReq);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
       createEventListener();
-      listEventsListener();
+//      listEventsListener(); --> Ready
+      createFinReqListener();
 
-//        createClientListener();
-//        listClientsListener();
-//        createTaskListener();
+      createClientListener();
+      listClientListener();
+//      createTaskListener(); --> Ready
 //        listTasksListener();
-//        createStaffListener();
+//      createStaffListener(); --> Ready
+      
 
 
     }
@@ -136,21 +156,88 @@ public class MainGUI extends JFrame{
     public void createEventListener(){
         btnCreateEvent.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                EventRequestGUI frame = new EventRequestGUI();
+                EventRequestGUI frame = new EventRequestGUI(controller);
             }
         });
     }
-
-
-    public void  listEventsListener() {
-        btnListEvent.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EventViewGUI frame= new EventViewGUI();
-
-            }
-        });
-
+    
+    
+    public void createClientListener() {
+    	btnCreateClient.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ClientGUI frame = new ClientGUI(controller);
+				
+			}
+		});
+    }
+    
+    public void listClientListener() {
+    	btnListClients.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				listClientsView = new ViewClients(controller);
+				
+			}
+		});
+    	
+    }
+    
+    
+    public void createFinReqListener() {
+    	btnCreateFinReq.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FinancialRequestGUI frame = new FinancialRequestGUI(controller, employee);
+				
+			}
+		});
     }
 
+
+
+
+
+
+    //Χρειαζομαστε το TaskGUI
+//    public void createTaskListener() {
+//    	btnCreateTask.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				TaskGUI frame = new TaskGUI(controller, employee);
+//				
+//			}
+//		});
+//    }
+    
+    
+
+    //Χρειαζομαστε το RecruitmentRequestGUI
+//    public void createStaffListener() {
+//    	btnCreateStaff.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				RecruitmentRequestGUI = new RecruitmentRequestGUI(controller, employee);
+//				
+//			}
+//		});
+//    }
+
+
+    //Χρειαζομαστε το ViewEventsGUI
+//    public void  listEventsListener() {
+//        btnListEvent.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                ViewEventsGUI frame= new ViewEventsGUI(controller, employee);
+
+//          }
+//        });
+
+//    }
 }

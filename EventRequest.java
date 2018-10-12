@@ -3,12 +3,12 @@ public class EventRequest {
     private String type;
     private String from;
     private String to;
-    private int attendees;
-    private int budget;
+    private String attendees;
+    private String budget;
     private final int ID;
 
 
-    public EventRequest(String name, String type, String from,String to, int attendees, int budget, int ID){
+    public EventRequest(String name, String type, String from,String to, String attendees, String budget, int ID){
         this.name = name;
         this.type = type;
         this.from = from;
@@ -50,19 +50,19 @@ public class EventRequest {
         this.to = to;
     }
 
-    public int getAttendees() {
+    public String getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(int attendees) {
+    public void setAttendees(String attendees) {
         this.attendees = attendees;
     }
 
-    public int getBudget() {
+    public String getBudget() {
         return budget;
     }
 
-    public void setBudget(int budget) {
+    public void setBudget(String budget) {
         this.budget = budget;
     }
 
