@@ -26,10 +26,10 @@ public class MainGUI extends JFrame{
     JButton btnCreateClient = new JButton("Create client");
     JButton btnListEvent = new JButton("List Events");
     JButton btnListStaff = new JButton("List Staff");
-    JButton btnCreateResource = new JButton("Create Resource");
+   // JButton btnCreateResource = new JButton("Create Resource");
     JButton btnListResource = new JButton("List Resource");
     private final JButton btnLogout = new JButton("Logout");
-    JButton btnCreateStaff = new JButton("Create Staff");
+    JButton btnCreateStaff = new JButton("Request Staff");
     private final JButton btnListClients = new JButton("List Clients");
     private final JButton btnCreateTask = new JButton("Create Task");
     private final JButton btnListTasks = new JButton("List Tasks");
@@ -59,6 +59,7 @@ public class MainGUI extends JFrame{
         btnListTasks.setVisible(false);
         btnListResource.setVisible(false);
         btnCreateFinReq.setVisible(false);
+        btnCreateStaff.setVisible(false);
 
 
 
@@ -147,7 +148,7 @@ public class MainGUI extends JFrame{
       listClientListener();
 //      createTaskListener(); --> Ready
 //        listTasksListener();
-//      createStaffListener(); --> Ready
+     createStaffListener();
       
 
 
@@ -202,31 +203,31 @@ public class MainGUI extends JFrame{
 
 
 
-    //Χρειαζομαστε το TaskGUI
-//    public void createTaskListener() {
-//    	btnCreateTask.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				TaskGUI frame = new TaskGUI(controller, employee);
-//				
-//			}
-//		});
-//    }
+
+    public void createTaskListener() {
+    	btnCreateTask.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TaskGUI frame = new TaskGUI(controller, employee);
+
+			}
+		});
+    }
     
     
 
-    //Χρειαζομαστε το RecruitmentRequestGUI
-//    public void createStaffListener() {
-//    	btnCreateStaff.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				RecruitmentRequestGUI = new RecruitmentRequestGUI(controller, employee);
-//				
-//			}
-//		});
-//    }
+
+    public void createStaffListener() {
+    	btnCreateStaff.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RecruitmentRequestGUI frame= new RecruitmentRequestGUI(controller, employee);
+
+			}
+		});
+    }
 
 
     //Χρειαζομαστε το ViewEventsGUI

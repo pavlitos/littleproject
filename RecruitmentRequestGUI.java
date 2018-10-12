@@ -17,11 +17,32 @@ public class RecruitmentRequestGUI extends JFrame{
     private JList teamList;
 
 
-    public class RecruitmentRequestGUI(Controller controller,Employee current){
+    public  RecruitmentRequestGUI(Controller controller,Employee currentUser){
 
         super("Request More Resources");
-        this.controller=controller;
 
+        panel.setLayout(null);
+        getContentPane().add(panel);
+        setSize(800, 900);
+        this.controller=controller;
+        this.currentUser=currentUser;
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
+
+
+        createButton.setBounds(233, 313, 117, 25);
+        panel.add(createButton);
+
+        descriptionField = new JTextField();
+        descriptionField.setBounds(135, 29, 163, 86);
+        panel.add(descriptionField);
+        descriptionField.setColumns(10);
+
+        lblDescription = new JLabel("Description");
+        lblDescription.setBounds(12, 27, 105, 15);
+        panel.add(lblDescription);
+        setVisible(true);
 
 
     }
