@@ -51,7 +51,7 @@ public class Controller {
 
 	
 	//creates the financial request and adds it to the list
-	public void createFinRequest(EventRequest event, String reason, double amount, Employee manager) {
+	public void createFinRequest(EventRequest event, String reason, String amount, Employee manager) {
 		FinancialRequest finRequest = new FinancialRequest(event, reason, amount, manager, budgetC++);
 		financialRequest.add(finRequest);
 	}
