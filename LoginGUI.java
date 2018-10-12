@@ -24,11 +24,15 @@ public class LoginGUI extends JFrame {
     MainGUI regView;
     private final JButton btnExit = new JButton("Exit");
 
+    //CONSTRUCTOR
     public LoginGUI(){
         super("Login with Username and Password");
 
-        panel();
+        Controller controller = new Controller();
+        
+        panel(controller);
         JFrame frame = new JFrame("Type your credentials");
+        
 
         getContentPane().add(jpanel);
         btnExit.addActionListener(e -> System.exit(0));
@@ -42,7 +46,7 @@ public class LoginGUI extends JFrame {
 
     }
 
-    private void panel()
+    private void panel(Controller controller)
     {
         // Setting the width and height of frame
         setSize(350, 200);
@@ -77,7 +81,7 @@ public class LoginGUI extends JFrame {
                 Login login=new Login();
                 Employee user=login.EmployeeLogin(username,password);
                 if(user != null){
-                    regView= new MainGUI(user);
+                    regView= new MainGUI(user, controller);
                     //Πρεπει να περασουμε το login αλλιως δεν μπορουμε
                     // να κλεισουμε το login παραθυρο
                     
