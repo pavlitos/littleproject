@@ -1,3 +1,5 @@
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +20,7 @@ public class MainGUI extends JFrame{
     JButton btnListStaff = new JButton("List Staff");
     JButton btnCreateResource = new JButton("Create Resource");
     JButton btnListResource = new JButton("List Resource");
+    JButton btnCreateFinance= new JButton("Create Finance Request");
     private final JButton btnLogout = new JButton("Logout");
     JButton btnCreateStaff = new JButton("Create Staff");
     private final JButton btnListClients = new JButton("List Clients");
@@ -46,7 +49,7 @@ public class MainGUI extends JFrame{
         btnListTasks.setVisible(false);
         btnCreateResource.setVisible(false);
         btnListResource.setVisible(false);
-
+        btnCreateFinance.setVisible(false);
 
 
 
@@ -71,7 +74,7 @@ public class MainGUI extends JFrame{
             case "Production Manager":
                 btnCreateTask.setVisible(true);
                 btnCreateStaff.setVisible(true);
-                btnCreateResource.setVisible(true);
+                btnCreateFinance.setVisible(true);
                 btnListTasks.setVisible(true);
                 break;
             case "Service Manager":
@@ -118,12 +121,15 @@ public class MainGUI extends JFrame{
         btnListStaff.setBounds(237, 122, 147, 25);
         jpanel.add(btnListStaff);
 
+        btnCreateFinance.setBounds(234, 170, 150, 25);
+        jpanel.add(btnCreateFinance);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
       createEventListener();
       listEventsListener();
-
+        createFinanceListener();
 //        createClientListener();
 //        listClientsListener();
 //        createTaskListener();
@@ -146,11 +152,21 @@ public class MainGUI extends JFrame{
         btnListEvent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EventViewGUI frame= new EventViewGUI();
+                ViewEventsGUI frame= new ViewEventsGUI();
 
             }
         });
 
     }
+
+
+    public void createFinanceListener(){
+        btnCreateFinance.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                FinancialRequestGUI frame = new FinancialRequestGUI(employee);
+            }
+        });
+    }
+
 
 }

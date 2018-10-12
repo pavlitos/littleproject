@@ -1,10 +1,5 @@
 import javax.swing.*;
 
-
-
-public class EventViewGUI extends JFrame{
-
+public class ViewEventsGUI extends JFrame{
     JPanel panel = new JPanel();
-
-
 }

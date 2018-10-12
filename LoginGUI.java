@@ -96,7 +96,20 @@ public class LoginGUI extends JFrame {
 
     }
 
+    public JButton getLoginButton() {
+        return btnLogin;
+    }
 
+    public JTextField getUserField() {
+        return userText;
+    }
+
+    public JPasswordField getPassField() {
+        return passwordText;
+    }
+    public MainGUI getMainGUI(){
+        return regView;
+    }
 
 
 
