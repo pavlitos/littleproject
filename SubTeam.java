@@ -41,7 +41,7 @@ public class SubTeam {
 	}
 
 	public String toString() {
-		return "name: " + name;
+		return name;
 	}
 
 }
