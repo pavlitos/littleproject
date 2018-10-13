@@ -100,6 +100,18 @@ public class MainGUI extends JFrame{
                 break;
             case "Photographer":
             	btnListTasks.setVisible(true);
+            case "Audio Specialist":
+            	btnListTasks.setVisible(true);
+            case "Designer":
+            	btnListTasks.setVisible(true);
+            case "Decorator":
+            	btnListTasks.setVisible(true);
+            case "Technician":
+            	btnListTasks.setVisible(true);
+            case "Waiter":
+            	btnListTasks.setVisible(true);
+            case "Chef":
+            	btnListTasks.setVisible(true);
 
         }
 
