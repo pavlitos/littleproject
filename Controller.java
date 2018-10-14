@@ -62,13 +62,23 @@ public class Controller {
 	}
 	
 	//creates the financial request and adds it to the list
-	public void createFinRequest(EventRequest event, String reason, String amount, Employee manager) {
-		FinancialRequest finRequest = new FinancialRequest(event, reason, amount, manager, budgetC++);
+	public void createFinRequest( String reason, double amount, Employee manager) {
+		FinancialRequest finRequest = new FinancialRequest(reason, amount, manager, budgetC++);
 		financialRequest.add(finRequest);
 	}
 	public List<FinancialRequest> getFinRequest(){
 		return financialRequest;
 	}
+	
+	public void deleteFinancialRequest(FinancialRequest request) {
+		for (Iterator<FinancialRequest> iter = financialRequest.listIterator(); iter.hasNext(); ) {
+            FinancialRequest r = iter.next();
+            if (r.getId() == request.getId()) iter.remove();
+        }
+
+	}
+	
+
 	
 
 	//creates the client and adds him to the list
@@ -97,13 +107,19 @@ public class Controller {
 	}
 
 	
-	public void createRecRequest(EventRequest event, SubTeam subteam, String description) {
-		RecruitmentRequest recRequest = new RecruitmentRequest(event, subteam, description, budgetC++);
+	public void createRecRequest( SubTeam subteam, String description) {
+		RecruitmentRequest recRequest = new RecruitmentRequest(subteam, description, budgetC++);
 		recruitmentRequest.add(recRequest);
 	}
 	public List<RecruitmentRequest> getRecRequest(){
 		return recruitmentRequest;
 	}
+	public void deleteStaffRequest(RecruitmentRequest req) {
+        for (Iterator<RecruitmentRequest> iter = recruitmentRequest.listIterator(); iter.hasNext(); ) {
+            RecruitmentRequest r = iter.next();
+            if (r.getId() == req.getId()) iter.remove();
+        }
+    }
 	
 	
 	public List<SubTeam> getProdTeam(){
