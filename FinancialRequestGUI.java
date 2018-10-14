@@ -15,7 +15,6 @@ public class FinancialRequestGUI extends JFrame {
     JButton createButton = new JButton("Create");
     JTextField descriptionField;
     private JLabel lblDescription;
-    private JList eventList;
     private JLabel lblFinance;
     private JTextField financeField;
 
@@ -25,14 +24,11 @@ public class FinancialRequestGUI extends JFrame {
         super("SEP Financial Request");
         setSize(800, 900);
         jpanel.setLayout(null);
+        
         this.employee=currentuser;
         this.controller = controller;
 
         getContentPane().add(jpanel);
-
-        JLabel eventsLabel = new JLabel("Events");
-        eventsLabel.setBounds(328, 12, 70, 15);
-        jpanel.add(eventsLabel);
 
 
         createButton.setBounds(233, 313, 117, 25);
@@ -50,14 +46,10 @@ public class FinancialRequestGUI extends JFrame {
         List<EventRequest> event= controller.getEvents();
         EventRequest[] events  = event.toArray(new EventRequest[event.size()]);
 
-        //************* does not work yet  **************
-        eventList = new JList(events);
-//        jpanel.add(eventList);
-//        eventList.setBounds(338, 42, 228, 93);
-//        JScrollPane pane = new JScrollPane();
 
 
-        lblFinance = new JLabel("Financial");
+
+        lblFinance = new JLabel("Amount");
         lblFinance.setBounds(12, 159, 105, 15);
         jpanel.add(lblFinance);
 
@@ -77,9 +69,8 @@ public class FinancialRequestGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String description=descriptionField.getText();
-                String finance= financeField.getText();
-                EventRequest event = (EventRequest) eventList.getSelectedValue();
-                controller.createFinRequest(event, description, finance, employee);
+                double finance = Double.parseDouble(financeField.getText());
+                controller.createFinRequest(description, finance, employee);
             }
         });
   }
