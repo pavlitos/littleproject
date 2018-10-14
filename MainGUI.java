@@ -1,92 +1,300 @@
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class RecruitmentRequestGUI extends JFrame{
+public class MainGUI extends JFrame{
 
-    private final Controller controller;
-    JPanel panel=new JPanel();
-    JButton createButton= new JButton("Create");
-    private  JTextField descriptionField;
-    private JLabel lblDescription;
-    private Employee currentUser;
-    private JLabel lblTeam;
-    private JList teamList;
+	private Controller controller;
+    private Employee employee;
+    private LoginGUI loginGUI;
+    private EventRequest event;
 
 
-    public  RecruitmentRequestGUI(Controller controller,Employee currentUser){
+    JPanel jpanel= new JPanel();
+    ViewClients listClientsView;
+    
+    public ViewClients getListClientsView() {
+    	return listClientsView;
+    }
+    
+    public void setListClientsView() {
+    	this.listClientsView = listClientsView;
+    }
+    
+    JButton btnCreateEvent = new JButton("Create event");
+    JButton btnCreateClient = new JButton("Create client");
+    JButton btnListEvent = new JButton("View Events");
+    JButton btnListStaff = new JButton("View Recruitment Req");
+    JButton btnListResource = new JButton("List Resource");
+    private final JButton btnLogout = new JButton("Logout");
+    JButton btnCreateStaff = new JButton("Create Recruitment Req");
+    private final JButton btnListClients = new JButton("View Clients");
+    private final JButton btnCreateTask = new JButton("Create Task");
+    private final JButton btnListTasks = new JButton("View Tasks");
+    JButton btnCreateFinReq = new JButton("Create Financial Req");
+    JButton btnListFinReq = new JButton("View Financial Req");
 
-        super("SEP Create Recruitment Request");
 
-        panel.setLayout(null);
-        getContentPane().add(panel);
-        setSize(800, 900);
-        this.controller=controller;
-        this.currentUser=currentUser;
+    public MainGUI(Employee currentUser, Controller controller){
+
+        super("SEP MAIN MENU");
+        setTitle("SEP Main Menu");
+        setSize(600, 400);
+        jpanel.setLayout(null);
+       
+        employee=currentUser;
+        this.controller = controller;
+
+
+        getContentPane().add(jpanel);
 
 
 
+        btnCreateEvent.setVisible(false);
+        btnListEvent.setVisible(false);
+        btnCreateClient.setVisible(false);
+        btnListClients.setVisible(false);
+        btnCreateStaff.setVisible(false);
+        btnListStaff.setVisible(false);
+        btnCreateTask.setVisible(false);
+        btnListTasks.setVisible(false);
+        btnCreateFinReq.setVisible(false);
+        btnListFinReq.setVisible(false);
 
-        createButton.setBounds(233, 313, 117, 25);
-        panel.add(createButton);
 
-        descriptionField = new JTextField();
-        descriptionField.setBounds(135, 29, 163, 86);
-        panel.add(descriptionField);
-        descriptionField.setColumns(10);
 
-        lblDescription = new JLabel("Description");
-        lblDescription.setBounds(12, 27, 105, 15);
-        panel.add(lblDescription);
+        switch(employee.getPosition()){
+            case "Customer Service":
+                btnCreateEvent.setVisible(true);
+                break;
+            case "Senior Customer Service":
+                btnListEvent.setVisible(true);
+                btnCreateClient.setVisible(true);
+                btnListClients.setVisible(true);
+                break;
+            case "Financial Manager":
+                btnListEvent.setVisible(true);
+                btnListResource.setVisible(true);
+                btnListClients.setVisible(true);
+                btnListFinReq.setVisible(true);
+                break;
+            case "Administration Dept. Manager":
+                btnListEvent.setVisible(true);
+                btnListClients.setVisible(true);
+                break;
+            case "Production Manager":
+                btnCreateTask.setVisible(true);
+                btnCreateStaff.setVisible(true);
+                btnCreateFinReq.setVisible(true);
+                btnListTasks.setVisible(true);
+                break;
+            case "Service Manager":
+                btnCreateTask.setVisible(true);
+                btnCreateStaff.setVisible(true);
+                btnCreateFinReq.setVisible(true);
+                btnListTasks.setVisible(true);
+                break;
+            case "HR":
+                btnListStaff.setVisible(true);
+                break;
+            case "Photographer":
+            	btnListTasks.setVisible(true);
+            case "Audio Specialist":
+            	btnListTasks.setVisible(true);
+            case "Designer":
+            	btnListTasks.setVisible(true);
+            case "Decorator":
+            	btnListTasks.setVisible(true);
+            case "Technician":
+            	btnListTasks.setVisible(true);
+            case "Waiter":
+            	btnListTasks.setVisible(true);
+            case "Chef":
+            	btnListTasks.setVisible(true);
+
+        }
+
+        btnCreateEvent.setBounds(12, 23, 157, 25);
+        jpanel.add(btnCreateEvent);
+
+
+        btnCreateClient.setBounds(12, 71, 157, 25);
+        jpanel.add(btnCreateClient);
+
+
+        btnListEvent.setBounds(12, 122, 157, 25);
+        jpanel.add(btnListEvent);
+        
+        btnLogout.setBounds(450, 314, 117, 25);
+        jpanel.add(btnLogout);
+        
+        btnListClients.setBounds(12, 169, 157, 25);
+        jpanel.add(btnListClients);
+        
+        btnCreateTask.setBounds(12, 213, 157, 25);
+        jpanel.add(btnCreateTask);
+
+        btnListTasks.setBounds(234, 23, 150, 25);
+        jpanel.add(btnListTasks);
+
+
+        btnCreateStaff.setBounds(234, 71, 150, 25);
+        jpanel.add(btnCreateStaff);
+
+
+        btnListStaff.setBounds(234, 122, 150, 25);
+        jpanel.add(btnListStaff);
+        
+
+        btnCreateFinReq.setBounds(234, 170, 150, 23);
+        jpanel.add(btnCreateFinReq);
+        
+        btnListFinReq.setBounds(234, 214, 157, 23);
+        jpanel.add(btnListFinReq);
+        
+        
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        
-        
-        Login login = new Login();
-        String position[];
-        position = login.position();
-        
-        lblTeam = new JLabel("Team");
-		lblTeam.setBounds(12, 159, 70, 15);
-		panel.add(lblTeam);
-		
-		List <SubTeam> team = new ArrayList<>();
-		
-		if(currentUser.getPosition() == position[7]){
-			team = controller.getProdTeam();
-		}
-		
-		if(currentUser.getPosition() == position[8]){
-			team = controller.getServTeam();
-		}
-		
-		SubTeam[] teams  = team.toArray(new SubTeam[team.size()]);
 
-		teamList = new JList(teams);
-		teamList.setBounds(86, 173, 217, 77);
-		panel.add(teamList);
-		
-		
-		createStaffListener();
-		setVisible(true);
+      createEventListener();
+      listEventsListener();
+      createFinReqListener();
+      listFinReqListener();
 
+      createClientListener();
+      listClientListener();
+      createTaskListener();
+      listTasksListener();
+      createStaffListener();
+      listStaffListener();
+      logoutListener();
+
+
+    }
+
+    public void createEventListener(){
+        btnCreateEvent.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                EventRequestGUI frame = new EventRequestGUI(controller);
+            }
+        });
     }
     
     
-    public void createStaffListener(){
-		createButton.addActionListener(new ActionListener() {
+    public void createClientListener() {
+    	btnCreateClient.addActionListener(new ActionListener() {
+			
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				String description = descriptionField.getText();
-				SubTeam team = (SubTeam) teamList.getSelectedValue();
-				controller.createRecRequest(team, description);
+				ClientGUI frame = new ClientGUI(controller);
+				
 			}
 		});
-	}
+    }
+    
+    public void listClientListener() {
+    	btnListClients.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				listClientsView = new ViewClients(controller);
+				
+			}
+		});
+    	
+    }
+    
+    
+    public void createFinReqListener() {
+    	btnCreateFinReq.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FinancialRequestGUI frame = new FinancialRequestGUI(controller, employee);
+				
+			}
+		});
+    }
 
 
+    public void createTaskListener() {
+    	btnCreateTask.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TaskGUI frame = new TaskGUI(controller, employee);
+
+			}
+		});
+    }
+    
+    
+
+
+    public void createStaffListener() {
+    	btnCreateStaff.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RecruitmentRequestGUI frame= new RecruitmentRequestGUI(controller, employee);
+
+			}
+		});
+    }
+    
+    public void listStaffListener() {
+    	btnListStaff.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ViewRecruitmentRequestsGUI frame = new ViewRecruitmentRequestsGUI(controller, employee);
+				
+			}
+		});
+    }
+
+
+    public void  listEventsListener() {
+        btnListEvent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViewEventsGUI frame= new ViewEventsGUI(controller, employee);
+
+          }
+        });
+
+    }
+    
+    public void listTasksListener() {
+    	btnListTasks.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ViewTasksGUI frame = new ViewTasksGUI(controller, employee);
+				
+			}
+		});
+    }
+    
+    public void listFinReqListener() {
+    	btnListFinReq.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ViewFinancialRequestsGUI frame = new ViewFinancialRequestsGUI(controller, employee);
+				
+			}
+		});
+    }
+    
+    public void logoutListener(){
+        btnLogout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                employee = null;
+                dispose();
+            }
+        });
+    }
 }
