@@ -1,27 +1,20 @@
 
+
 public class RecruitmentRequest {
-	private EventRequest event;
+
 	 private SubTeam subTeam;
 	 private String description;
 	 private int id;
 	 
 	 
-	 public RecruitmentRequest(EventRequest event, SubTeam subTeam, String description, int id) {
-		 this.event = event;
+	 public RecruitmentRequest( SubTeam subTeam, String description, int id) {
+
 		 this.subTeam = subTeam;
 		 this.description = description;
 		 this.id = id;
 	 }
 
 
-	public EventRequest getEvent() {
-		return event;
-	}
-
-
-	public void setEvent(EventRequest event) {
-		this.event = event;
-	}
 
 
 	public SubTeam getSubTeam() {
@@ -54,7 +47,7 @@ public class RecruitmentRequest {
 	}
 	 
 	 public String toString() {
-		 return "[Event: " + event + ", SubTeam: " + subTeam + ", description: " + ", id: " + id + "]";
+		 return "[ SubTeam: " + subTeam + ", description: " + ", id: " + id + "]";
 	 }
 
 }
