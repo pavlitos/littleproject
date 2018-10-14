@@ -79,6 +79,9 @@ public class ViewTasksGUI extends JFrame {
         List<Task> taskToDisplay = new ArrayList<>();
         
 
+	 for(Task t : allTasks) {
+        	System.out.println(t);
+        }
 
                
         for (Task t : allTasks) {
