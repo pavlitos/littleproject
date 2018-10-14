@@ -1,24 +1,15 @@
 public class FinancialRequest {
 	private EventRequest event;
 	private String reason;
-	private String amount;
+	private double amount;
 	private Employee manager;
 	private int id;
 	
-	public FinancialRequest(EventRequest event, String reason, String amount, Employee manager, int id) {
-		this.event = event;
+	public FinancialRequest( String reason, double amount, Employee manager, int id) {
 		this.reason = reason;
 		this.amount = amount;
 		this.manager = manager;
 		this.id = id;
-	}
-
-	public EventRequest getEvent() {
-		return event;
-	}
-
-	public void setEvent(EventRequest event) {
-		this.event = event;
 	}
 
 	public String getReason() {
@@ -29,11 +20,11 @@ public class FinancialRequest {
 		this.reason = reason;
 	}
 
-	public String getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(String amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
@@ -54,7 +45,7 @@ public class FinancialRequest {
 	}
 	
 	public String toString() {
-		return "Financial Request[ Event: " + event +", reason: " + reason + ", amount: " + amount + ", department: " + manager + ". id: " + id + "]";
+		return "Financial Request[ Reason: " + reason + ", amount: " + amount + ", department: " + manager + ". id: " + id + "]";
 	}
 
 }
