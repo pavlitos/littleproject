@@ -2,3 +2,4 @@ I have fixed the ViewEventsGui and the TasksGUI, still getting error on the View
 Uploaded all the classes here, so you can be up to date.  
 ##The same way I did the ViewTasks we can do the ViewFinancialRequests and the ViewRecruitmentRequests.  
 I added the ViewFinancialRequestsGUI and ViewRecruitmentRequestsGUI. Everything is working as it should except for the ViewTasksGUI.  
+However if you have the time and the will change them and just output them in the console, so it will look different. Otherwise I will do it tonight or tomorrow.  
